@@ -1,0 +1,2 @@
+class PassagersController < ApplicationController
+end

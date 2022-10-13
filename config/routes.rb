@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :reviews, only: %i[create new index show]
 
   resources :voitures
+
+  resources :users, only: %i[show edit update]
 end
