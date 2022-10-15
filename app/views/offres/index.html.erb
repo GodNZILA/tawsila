@@ -1,3 +1,11 @@
-<% @offres.each do |offre| %>
-  <%= offre.description_trajet %>
-<% end %>
+<div class="container">
+  <h2>Trajets disponibles</h2>
+    <div class="listes-offres">
+      <% @offres.each do |offre| %>
+        <ul>
+          <%= offre.description_trajet %>
+        </ul>
+      <% end %>
+    </div>
+
+</div>

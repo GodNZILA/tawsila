@@ -1,7 +1,7 @@
 class OffresController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
 
-  before_action :set_offre, only: [:show, :edit, :update, :destroy]
+  before_action :set_offre, only: %i[show edit update destroy]
 
   def index
     # if current_user.passager.nil? && current_user.conducteur.nil?
@@ -11,6 +11,7 @@ class OffresController < ApplicationController
   end
 
   def show
+
   end
 
   def new
@@ -49,6 +50,7 @@ class OffresController < ApplicationController
   def set_offre
     @offre = Offre.find(params[:id])
   end
+
 
 
 end
