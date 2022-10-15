@@ -17,7 +17,7 @@ class OffresController < ApplicationController
     @offre = Offre.new
   end
 
-  def create
+  def create!
     @offre = Offre.new(offre_params)
     @offre.user = current_user
     if @offre.save
@@ -49,5 +49,6 @@ class OffresController < ApplicationController
   def set_offre
     @offre = Offre.find(params[:id])
   end
+
 
 end
