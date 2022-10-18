@@ -18,13 +18,13 @@ class OffresController < ApplicationController
     @offre = Offre.new
   end
 
-  def create!
+  def create
     @offre = Offre.new(offre_params)
-    @offre.user = current_user
+    # @offre.voiture_id = current_user.id
     if @offre.save
-      redirect_to offres_path
+      redirect_to offres_path, notice: 'Votre offre a bien été créée'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -44,7 +44,7 @@ class OffresController < ApplicationController
   private
 
   def offre_params
-    params.require(:offre).permit(:description_trajet, :depart, :arrivee, :heure_depart, :prix)
+    params.require(:offre).permit(:description_trajet, :depart, :arrivee, :heure_depart, :prix, :voiture_id)
   end
 
   def set_offre
