@@ -6,6 +6,11 @@
       <p>Point d'arrivée: <%= @offre.arrivee %></p>
       <p>heure de départ: <%=@offre.heure_depart %></p>
       <p>Prix du trajet complet: <%= @offre.prix %></p>
-      <%# <%= link_to "Je réserve 💪", "" %> 
+      <%# <%= link_to "Je réserve 💪", "" %>
     </div>
 </div>
+
+<% simple_form_for @booking do |f|  %>
+<%= f.input :prix %>
+<%= f.submit "Valider" %>
+<% end %>
