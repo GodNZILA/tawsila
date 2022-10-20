@@ -2,8 +2,11 @@
 <div class="card_booking">
   <% @bookings.each do |booking|%>
     <div class="card_booking">
-      <p><%= booking.prix %></p>
-      <p><%= booking.statut %></p>
+      <p>Point de départ:<%= booking.depart %></p>
+      <p>point d'arrivée:<%= booking.arrivee %></p>
+      <p>Prix:<%= booking.prix %></p>
+      <p>Statut de la demande:<%= booking.statut %></p>
+      <%= link_to "voir votre réservation", booking_path(booking) %>
     </div>
   <% end %>
 </div>

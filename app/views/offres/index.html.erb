@@ -1,11 +1,14 @@
 <div class="container">
   <h2>Trajets disponibles</h2>
     <div class="listes-offres">
+      <ul>
       <% @offres.each do |offre| %>
-        <ul>
-          <%= offre.description_trajet %>
-        </ul>
+          <li>
+            <%= offre.description_trajet %>
+            <%= link_to "voir l'offre", offre_path(offre) %>
+          </li>
       <% end %>
+      </ul>
     </div>
 
 </div>

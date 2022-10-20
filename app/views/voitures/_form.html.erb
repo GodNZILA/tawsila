@@ -1,0 +1,8 @@
+<div class="voiture_card">
+  <%= simple_form_for (voiture) do |f| %>
+    <%= f.input :marque, label: 'Marque de la voiture' %>
+    <%= f.input :model, label: 'Modèle de la voiture' %>
+    <%= f.input :immatriculation, label: 'Immatriculation' %>
+    <%= f.submit "valider" %>
+  <% end %>
+</div>

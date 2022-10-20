@@ -2,7 +2,7 @@ class VoituresController < ApplicationController
   before_action :set_voiture, only: %i[show edit update destroy]
 
   def index
-    @voitures = Voiture.where(user: current_user)
+    @voitures = Voiture.where(conducteur: current_user.conducteur)
   end
 
   def show
@@ -13,9 +13,9 @@ class VoituresController < ApplicationController
     @voiture = Voiture.new
   end
 
-  def create!
+  def create
     @voiture = Voiture.new(voiture_params)
-    @voiture.user = current_user
+    @voiture.conducteur = current_user.conducteur
     if @voiture.save
       redirect_to voitures_path
     else
@@ -42,7 +42,7 @@ class VoituresController < ApplicationController
   private
 
   def voiture_params
-    params.require(:voiture).permit(:marque, :modele, :couleur, :immatriculation, :nb_places)
+    params.require(:voiture).permit(:marque, :model, :couleur, :immatriculation, :nb_places)
   end
 
   def set_voiture

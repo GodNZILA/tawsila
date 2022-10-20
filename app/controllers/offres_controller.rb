@@ -28,6 +28,7 @@ class OffresController < ApplicationController
     end
   end
 
+  #les autorisations pour modifier les offres
   def edit
   end
 
@@ -37,7 +38,7 @@ class OffresController < ApplicationController
   end
 
   def destroy
-    @offre.destroy
+    @offre.destroy!
     redirect_to offres_path
   end
 
@@ -50,7 +51,4 @@ class OffresController < ApplicationController
   def set_offre
     @offre = Offre.find(params[:id])
   end
-
-
-
 end
