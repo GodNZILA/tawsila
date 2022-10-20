@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @offre = Offre.find(params[:offre_id])
   end
 
   def create
