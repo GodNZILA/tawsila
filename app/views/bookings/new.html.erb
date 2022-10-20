@@ -1,5 +1,5 @@
 <div class="new-booking">
-  <%= simple_form_for @booking do |f|  %>
+  <%= simple_form_for [@offre, @booking] do |f|  %>
     <%= f.input :depart %>
     <%= f.input :arrivee %>
     <%= f.input :prix %>
