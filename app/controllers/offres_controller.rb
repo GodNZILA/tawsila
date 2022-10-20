@@ -1,7 +1,7 @@
 class OffresController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
 
-  before_action :set_offre, only: [:show, :edit, :update, :destroy]
+  before_action :set_offre, only: %i[show edit update destroy]
 
   def index
     # if current_user.passager.nil? && current_user.conducteur.nil?
@@ -11,22 +11,24 @@ class OffresController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new
     @offre = Offre.new
   end
 
-  def create!
+  def create
     @offre = Offre.new(offre_params)
-    @offre.user = current_user
+    # @offre.voiture_id = current_user.id
     if @offre.save
-      redirect_to offres_path
+      redirect_to offres_path, notice: 'Votre offre a bien été créée'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
+  #les autorisations pour modifier les offres
   def edit
   end
 
@@ -36,19 +38,17 @@ class OffresController < ApplicationController
   end
 
   def destroy
-    @offre.destroy
+    @offre.destroy!
     redirect_to offres_path
   end
 
   private
 
   def offre_params
-    params.require(:offre).permit(:description_trajet, :depart, :arrivee, :heure_depart, :prix)
+    params.require(:offre).permit(:description_trajet, :depart, :arrivee, :heure_depart, :prix, :voiture_id)
   end
 
   def set_offre
     @offre = Offre.find(params[:id])
   end
-
-
 end

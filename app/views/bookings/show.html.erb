@@ -1,0 +1,13 @@
+<h4>Détails trajet</h4>
+
+ <div class="row">
+    <div class="col-12 col-lg-8">
+      <%# <h2 class="mt-5"><%= @booking.date_reservation %></h2>
+      <p>Date du trajet: <%= @booking.date_reservation %></p>
+      <p>Point de départ: <%= @booking.depart %></p>
+      <p>Point d'arrivée: <%=@booking.arrivee%></p>
+      <p>prix: <%= @booking.prix %></p>
+      <%= link_to "Retour", bookings_path %>
+      <%= link_to "Editer", edit_booking_path(@booking) %>
+      <%= link_to "Supprimer la réservation", booking_path(@booking),data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr de supprimer cette réservation?"}%>
+    </div>

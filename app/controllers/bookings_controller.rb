@@ -1,5 +1,13 @@
 class BookingsController < ApplicationController
-  before_action :init_booking, only: %i[show]
+
+  before_action :set_booking, only: %i[show edit update destroy]
+  def index
+    if current_user.passager
+      @bookings = Booking.where(passager_id: current_user.passager.id)
+    else
+      @bookings = Booking.where(offre_id: current_user.conducteur.offre.id)
+    end
+  end
 
 
   def new
@@ -8,13 +16,12 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.offre = @offre
-    @booking.users_id = current_user.id
-    if @booking.save!
-      # redirect_to offre_booking_path(@offre, @booking)
-      redirect_to offres_path(@offres), notice: "Réservation pour votre #{@offres}, faite avec succée !"
+    @booking.passager = current_user.passager
+    @booking.offre_id = params[:offre_id]
+    if @booking.save
+      redirect_to bookings_path, notice: 'Votre réservation a bien été créée'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -22,23 +29,30 @@ class BookingsController < ApplicationController
 
   end
 
+
   def edit
+
   end
 
   def update
+
+    @booking.update(booking_params)
+    redirect_to bookings_path
   end
 
+  def destroy
 
-
+    @booking.destroy
+    redirect_to bookings_path
+  end
 
   private
 
   def booking_params
-    params.require(:booking).permit(:date_reservation, :prix_calculer, :passager_id, :offre_id)
+    params.require(:booking).permit(:depart, :arrivee, :prix)
   end
 
-  def init_booking
+  def set_booking
     @booking = Booking.find(params[:id])
   end
-
 end

@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="card" style="width: 48rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <%= simple_form_for(offre) do |f| %>
+      <%= f.input :description_trajet, label: 'Donner une description à votre trajet' %>
+      <%# <%= f.input :types, label: 'Type de produit', collection: {Pantalon: :Pantalon, Jupe: :Jupe, Costume: :Costume, Robe: :Robe, Accessoire: :Accessoire, Chaussure: :Chaussure, Short: :Short, Equipement: :Equipement, Bijoux: :Bijoux, Autres: :Autres} %>
+      <%= f.input :voiture_id, as: :select, label: 'Sélectionner votre voiture', collection: current_user.conducteur.voitures, label_method: :voiture_name %>
+      <%= f.input :depart, label: 'Point de départ' %>
+      <%= f.input :arrivee, label: "Point d'arrivée" %>
+      <%= f.input :heure_depart, label: 'Heure de départ' %>
+      <%= f.input :prix, label: 'Prix du trajet complet' %>
+      <%# <%= f.input :image, label: 'Télécharger une photo de votre article'%>
+      <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

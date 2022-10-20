@@ -1,0 +1,7 @@
+<div class="col-12 col-lg-8">
+      <p>Marque de la voiture: <%= @voiture.marque %></p>
+      <p>Modele de la voiture: <%= @voiture.model %></p>
+      <p>Immatriculation: <%=@voiture.immatriculation %></p>
+      <%# <%= link_to "Je réserve 💪", "" %>
+      <%= link_to "Supprimer la voiture", voiture_path(@voiture),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+</div>

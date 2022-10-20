@@ -1,0 +1,21 @@
+<div class="container">
+   <div class="row">
+    <div class="col-12 col-lg-8">
+      <h2 class="mt-5"><%= @offre.description_trajet %></h2>
+      <p>Point de départ: <%= @offre.depart %></p>
+      <p>Point d'arrivée: <%= @offre.arrivee %></p>
+      <p>heure de départ: <%=@offre.heure_depart %></p>
+      <p>Prix du trajet complet: <%= @offre.prix %></p>
+      <%= link_to "Je réserve le trajet 💪", new_offre_booking_path(@offre) %>
+      <%= link_to "Supprimer l'offre", offre_path(@offre),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+    </div>
+</div>
+
+<div class="book-card">
+  <%= simple_form_for @booking do |f|  %>
+  <%= f.input :depart %>
+  <%= f.input :arrivee %>
+  <%= f.input :prix %>
+  <%= f.submit "Valider" %>
+  <% end %>
+</div>
