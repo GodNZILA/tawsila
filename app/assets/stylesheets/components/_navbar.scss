@@ -1,12 +1,27 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.tawsila-navbar {
+  display:flex;
+  justify-content: space-around;
+  background-color: #074063;
+  position: absolute;
+  bottom:0px;;
+  width:100%;
+  z-index: 99;
+  div.search {
+    position: relative;
+    span {
+      height: 96px;
+      width: 96px;
+      display: block;
+      border-radius: 50%;
+      background-color: red;
+      position:absolute;
+    }
+  }
+  div {
+    padding: 8px;
+  }
+  i{
+    font-size:36px;
+    color: #fff;
+  }
 }
