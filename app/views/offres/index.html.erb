@@ -1,11 +1,12 @@
 <div class="container">
-  <h2>Trajets disponibles</h2>
     <div class="listes-offres">
-      <ul>
-      <% @offres.each do |offre| %>
+      <h2>Trajets disponibles</h2>
+        <ul>
+        <% @offres.each do |offre| %>
         <%= render "car_card", offre: offre %>
-      <% end %>
-      </ul>
+
+        <% end %>
+        </ul>
     </div>
 
 </div>
