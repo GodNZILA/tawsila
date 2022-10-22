@@ -3,10 +3,7 @@
     <div class="listes-offres">
       <ul>
       <% @offres.each do |offre| %>
-          <li>
-            <%= offre.description_trajet %>
-            <%= link_to "voir l'offre", offre_path(offre) %>
-          </li>
+        <%= render "car_card", offre: offre %>
       <% end %>
       </ul>
     </div>
