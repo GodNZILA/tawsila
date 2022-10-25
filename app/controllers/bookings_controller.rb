@@ -2,10 +2,12 @@ class BookingsController < ApplicationController
 
   before_action :set_booking, only: %i[show edit update destroy]
   def index
-    if current_user.passager
+    if !params[:passager_id].nil? && params[:conducteur_id].nil?
       @bookings = Booking.where(passager_id: current_user.passager.id)
-    else
-      @bookings = Booking.where(offre_id: current_user.conducteur.offre.id)
+    elsif params[:passager_id].nil? && !params[:conducteur_id].nil?
+      offre_ids = Offre.where(voiture_id:current_user.conducteur.voitures.pluck(:id))
+      @bookings = Booking.where(offre_id: offre_ids)
+
     end
   end
 
