@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <% if current_page?(passager_bookings_path(current_user.passager)) %>
 <% passager_booking = true %>
 <% end %>
@@ -21,3 +22,4 @@
   <% end %>
   </div>
 </div>
+<% end %>
