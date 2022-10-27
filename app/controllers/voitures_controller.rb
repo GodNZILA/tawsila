@@ -48,4 +48,4 @@ class VoituresController < ApplicationController
   def set_voiture
     @voiture = Voiture.find(params[:id])
   end
-end
+
