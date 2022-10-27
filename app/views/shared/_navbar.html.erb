@@ -1,27 +1,35 @@
 
 <% if user_signed_in? %>
-<% if current_page?(passager_bookings_path(current_user.passager)) %>
-<% passager_booking = true %>
-<% end %>
-<% if current_page?(offres_path) %>
-<% offre = true %>
-<% end %>
-<% if current_page?(conducteur_bookings_path(current_user.conducteur)) %>
-<% conducteur_booking = true %>
-<% end %>
-<div class="tawsila-navbar" data-controller="navbar">
- <div class="sc-bottom-bar">
-  <%= link_to passager_bookings_path(current_user.passager), class: "sc-menu-item #{passager_booking ? 'sc_current' : ''} " do  %>
-    <i class="fa-solid fa-user"></i>
-  <% end %>
-   <span class="sc-nav-indicator"></span>
-  <%= link_to offres_path, class: "sc-menu-item #{offre ? 'sc_current' : ''} " do  %>
-    <i class="fa-solid fa-magnifying-glass"></i>
-  <% end %>
-  <%= link_to conducteur_bookings_path(current_user.conducteur), class: "sc-menu-item #{conducteur_booking ? 'sc_current' : ''} " do  %>
-      <i class="fa-solid fa-car"></i>
-  <% end %>
+    <% passager_booking = current_page?(passager_bookings_path(current_user.passager))  %>
+    <% offre = current_page?(offres_path)  %>
+    <% conducteur_booking =  current_page?(conducteur_bookings_path(current_user.conducteur)) %>
 
+  <div class="tawsila-navbar" data-controller="navbar">
+    <div class="sc-bottom-bar">
+      <%= link_to passager_bookings_path(current_user.passager), class: "sc-menu-item #{passager_booking ? 'selected' : ''} " do  %>
+        <i class="fa-solid fa-user"></i>
+      <% end %>
+      <%= link_to offres_path, class: "sc-menu-item #{offre ? 'selected' : ''} " do  %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+      <%= link_to conducteur_bookings_path(current_user.conducteur), class: "sc-menu-item #{conducteur_booking ? 'selected' : ''} " do  %>
+          <i class="fa-solid fa-car"></i>
+      <% end %>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="tawsila-navbar" data-controller="navbar">
+    <div class="sc-bottom-bar">
+      <%= link_to new_user_session_path, class: "sc-menu-item" do  %>
+        <i class="fa-solid fa-user"></i>
+      <% end %>
+      <%= link_to offres_path, class: "sc-menu-item selected " do  %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+      <%= link_to new_user_session_path, class: "sc-menu-item" do  %>
+          <i class="fa-solid fa-car"></i>
+      <% end %>
+    </div>
+  </div>
+
 <% end %>
