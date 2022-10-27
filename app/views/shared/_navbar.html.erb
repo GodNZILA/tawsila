@@ -1,3 +1,4 @@
+
 <% if user_signed_in? %>
 <% if current_page?(passager_bookings_path(current_user.passager)) %>
 <% passager_booking = true %>
@@ -20,6 +21,7 @@
   <%= link_to conducteur_bookings_path(current_user.conducteur), class: "sc-menu-item #{conducteur_booking ? 'sc_current' : ''} " do  %>
       <i class="fa-solid fa-car"></i>
   <% end %>
+
   </div>
 </div>
 <% end %>

@@ -12,6 +12,7 @@ class OffresController < ApplicationController
 
   def show
     @booking = Booking.new
+    @is_creator = @offre.voiture.conducteur.user == current_user
   end
 
   def new
