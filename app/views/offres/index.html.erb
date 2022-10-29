@@ -1,10 +1,13 @@
-<div class="container">
+<div class="title d-flex" >
       <h2>Trajets disponibles</h2>
+</div>
+<div class="container offre-index">
     <div class="listes-offres">
-        <ul>
+        <ul class="list-unstyled">
         <% @offres.each do |offre| %>
+        <%= link_to offre_path(offre) do %>
         <%= render "car_card", offre: offre %>
-
+        <% end %>
         <% end %>
         </ul>
     </div>
