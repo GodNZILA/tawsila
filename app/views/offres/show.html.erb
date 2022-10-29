@@ -6,7 +6,7 @@
       <p>Point d'arrivée: <%= @offre.arrivee %></p>
       <p>heure de départ: <%=@offre.heure_depart %></p>
       <p>Prix du trajet complet: <%= @offre.prix %></p>
-      <%= link_to "Je réserve le trajet 💪", new_offre_booking_path(@offre) unless @is_creator %>
+      <%= link_to "Je réserve le trajet 💪", new_offre_booking_path(@offre), class: "btn-tawsila" unless @is_creator %>
       <%= link_to "Supprimer l'offre", offre_path(@offre),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if @is_creator%>
     </div>
 </div>
