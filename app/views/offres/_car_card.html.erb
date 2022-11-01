@@ -1,17 +1,25 @@
 <div class="card-offre">
-  <div class="image-card">
-    <h3> <%= offre.description_trajet %></h3>
-    <%= image_tag "voiture1.jpeg", alt: "Image de la voiture", width: 200 %>
-  </div>
-  <br>
+     <%# <div class="img-card">
+     <h3> <%= offre.description_trajet %></h3>
+
+    <div class="images-card" style="background-image: url('<%= image_url "voiture1.jpeg" %>');background-size: cover;
+    background-repeat: no-repeat; height: 100%; width: 200px; background-position: center;">
+     <%# </div> %>
+
+   </div>
+
   <div class="offre-info">
 
      <p>
-      <i><i class="fa-solid fa-road"></i></i>
-      <span><%= offre.depart %></span> - <span><%= offre.arrivee %></span>
+      <i class="fa-solid fa-map-pin"></i>
+      <span><%= offre.depart %></span>
+    </p>
+    <p>
+      <i class="fa-solid fa-map-pin"></i>
+      <span><%= offre.arrivee %></span>
     </p>
      <p>
-      <i><i class="fa-solid fa-calendar-days"></i></i>
+      <i class="fa-solid fa-calendar-days"></i>
       <span><%= offre.heure_depart %></span>
     </p>
     <p>
@@ -19,11 +27,12 @@
       <span> <%= offre.voiture.conducteur.user.first_name %> </span>
     </p>
   </div>
-  <br>
+
   <div class="prix">
     <p>
       <i class="fa-solid fa-hand-holding-dollar"></i>
       <span> <%= offre.prix %> </span>
     </p>
   </div>
+
 </div>
