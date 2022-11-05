@@ -1,14 +1,23 @@
 class BookingsController < ApplicationController
 
   before_action :set_booking, only: %i[show edit update destroy]
-  def index
-    if !params[:passager_id].nil? && params[:conducteur_id].nil?
-      @bookings = Booking.where(passager_id: current_user.passager.id)
-    elsif params[:passager_id].nil? && !params[:conducteur_id].nil?
-      offre_ids = Offre.where(voiture_id:current_user.conducteur.voitures.pluck(:id))
-      @bookings = Booking.where(offre_id: offre_ids)
+  # def index
+  #   if !params[:passager_id].nil? && params[:conducteur_id].nil?
+  #     @bookings = Booking.where(passager_id: current_user.passager.id)
+  #   elsif params[:passager_id].nil? && !params[:conducteur_id].nil?
+  #     offre_ids = Offre.where(voiture_id: current_user.conducteur.voitures.pluck(:id)).pluck(:id)
+  #     @bookings = Booking.where(offre_id: offre_ids)
 
-    end
+  #   end
+  # end
+
+  def index_passager
+    @bookings = Booking.where(passager_id: current_user.passager.id)
+  end
+
+  def index_conducteur
+    offre_ids = Offre.where(voiture_id: current_user.conducteur.voitures.pluck(:id)).pluck(:id)
+    @bookings = Booking.where(offre_id: offre_ids)
   end
 
 
@@ -22,7 +31,11 @@ class BookingsController < ApplicationController
     @booking.passager = current_user.passager
     @booking.offre_id = params[:offre_id]
     if @booking.save
-      redirect_to bookings_path, notice: 'Votre réservation a bien été créée'
+      if current_user.passager
+      redirect_to passager_bookings_path(current_user.passager), notice: 'Votre réservation a bien été créée'
+      else
+        redirect_to conducteur_bookings_path(current_user.conducteur), notice: 'Votre réservation a bien été créée'
+      end
     else
       render :new, status: :unprocessable_entity
     end

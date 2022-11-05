@@ -10,52 +10,50 @@
     .sc-bottom-bar {
         position: fixed;
         display: flex;
-        padding: 16px 36px;
+        padding: 0 16px;
         justify-content: space-between;
         width: 100%;
         margin: auto;
         bottom: 0;
-        height: 64px;
-        font-size: 26px;
+        font-size: 14px;
         background-color: white;
         // background-image: radial-gradient(circle at 36px 6px, transparent 36px, #ffffff 37px);
         // filter: drop-shadow(0px -1px 6px rgba(0, 0, 0, 0.08)) drop-shadow(0px -2px 12px rgba(0, 0, 0, 0.12));
         transition: cubic-bezier(0.57, 0.23, 0.08, 0.96) .45s;
         align-items: center;
+        box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.1), 0px 0px 4px -1px rgba(0, 0, 0, 0.06);
+        border-radius: 16px 16px 0px 0px;
+        border: 1px solid #f1f5f9;
+        gap: 60PX;
+
+        img{
+          height: 24px;
+          width: 24px;
+        }
+
+        span{
+          color: #94A3B8;
+        }
 
     }
     .sc-menu-item {
-        color: var(--fore-color);
-        transition: ease-in-out .5s;
-        cursor: pointer;
-        transition: cubic-bezier(0.57, 0.23, 0.08, 0.96) .45s;
-        height: 64px;
-        width: 64px;
-        text-align: center;
-        i{
-          display: block;
-        }
         display: contents;
-    }
-    .animate {
-        transition: all cubic-bezier(0.57, 0.23, 0.08, 0.96) .60s;
+        gap: 8px;
+        height: 72px;
+        flex-grow: 1;
     }
     .selected {
-        position: relative;
-        color: #ffffff;
-        z-index: 99;
-        // transform: translate3d(0px, -22px, 0px);
-        // border-radius: 50%;
-        // border: 2px solid black;
-        border-top: 4px solid black;
-        width: 64px;
-        height: 64px;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        .fa-solid {
-            color: black;
-
+        color: $t-black;
+        border-top: 3px solid $t-black;
+        // background-color: #f1f5f9;
+        span{
+          color: $t-black;
+          font-weight: bold;
         }
+
+        svg path{
+          stroke: $t-black !important;
+        }
+
     }
 }
