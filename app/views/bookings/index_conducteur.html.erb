@@ -4,7 +4,7 @@
         <h2>Liste de résevations</h2>
   <%= image_tag "avatar", style: "height: 40px; border-radius: 50%" %>
   </div>
-<div class="card_booking_conducteur d-flex flex-column gap-3 position-relative">
+<div class="card_booking_conducteur d-flex flex-column gap-3 position-relative mt-3">
 <% if @bookings %>
   <% @bookings.each do |booking|%>
     <div class="card-offre p-3" data-controller="popup">
@@ -29,8 +29,8 @@
       <a href="#" class="btn btn-primary-sm" id="accepte" data-action="click->popup#accepte"> Accepter</a>
       <a href="#" class="btn btn-danger-sm" id="refuse" data-action="click->popup#refuse"> Refuser</a>
       </div>
-      <div class="popup d-none" data-popup-target="popupa">
-          <p>Saisissez le prix du trajet</p>
+      <div class="popup d-none m-auto h-100" data-popup-target="popupa">
+          <h4 class="w-100 text-center">Saisissez le prix du trajet</h4>
       <%= simple_form_for booking do |f| %>
       <%= f.input :prix, placeholder: "Prix" %>
       <%= f.input :statut, as: :hidden, html_input: {value: "Accepté"} %>
@@ -56,5 +56,8 @@
     <p>Vous pas encore de demande de réservation</p>
 <% end %>
   </div>
-<%= link_to "Créer une nouvelle offre", new_offre_path, :class=>"btn primary mt-3 position-fixed", style:"bottom:50px;"  %>
+
+  <%= link_to new_offre_path, class:"btn primary position-fixed", style:"bottom:80px; right:16px; border-radius:50px; height:64px; width: 64px;" do %>
+  <i class="fas fa-plus"></i>
+<% end %>
 </div>

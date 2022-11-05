@@ -23,14 +23,17 @@
  <% else %>
   <div class="tawsila-navbar" data-controller="navbar">
     <div class="sc-bottom-bar">
-      <%= link_to new_user_session_path, class: "sc-menu-item" do  %>
-        <i class="fa-solid fa-user"></i>
+      <%= link_to new_user_session_path, class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{passager_booking ? 'selected' : ''} "  do  %>
+        <%= image_tag "driver" %>
+        <span>Passager</span>
       <% end %>
-      <%= link_to offres_path, class: "sc-menu-item selected " do  %>
-        <i class="fa-solid fa-magnifying-glass"></i>
+      <%= link_to offres_path, class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{passager_booking ? 'selected' : ''}  " do  %>
+        <%= image_tag "recherche" %>
+          <span>Recherche</span>
       <% end %>
-      <%= link_to new_user_session_path, class: "sc-menu-item" do  %>
-          <i class="fa-solid fa-car"></i>
+      <%= link_to new_user_session_path, class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{passager_booking ? 'selected' : ''} " do  %>
+          <%= image_tag "conducteur" %>
+          <span>Conducteur</span>
       <% end %>
     </div>
   </div>
