@@ -1,6 +1,7 @@
-<div class="card-offre">
+<div class="card-offre mb-3">
      <%# <div class="img-card">
      <h3> <%= offre.description_trajet %></h3>
+
      <%= unless offre.voiture.photo.key %>
         <div class="images-card" style="background-image: url('<%= image_url "voiture1.jpeg" %>');background-size: cover;
         background-repeat: no-repeat; height: 100%; width: 200px; background-position: center;">
@@ -8,33 +9,32 @@
      <div class="images-card" style="background-image: url('<%= offre.voiture.photo.url %>');background-size: cover;
         background-repeat: no-repeat; height: 100%; width: 200px; background-position: center;">
     <% end %>
+
    </div>
 
-  <div class="offre-info">
+  <div class="offre-info p-3">
 
-     <p>
-      <i class="fa-solid fa-map-pin"></i>
+     <div class= "d-flex gap-2 align-items-center">
+      <%= image_tag "location" %>
       <span><%= offre.depart %></span>
-    </p>
-    <p>
-      <i class="fa-solid fa-map-pin"></i>
+    </div>
+    <%= image_tag "trajet" %>
+    <div class= "d-flex gap-2 align-items-center">
+      <%= image_tag "location" %>
       <span><%= offre.arrivee %></span>
-    </p>
-     <p>
-      <i class="fa-solid fa-calendar-days"></i>
-      <span><%= offre.heure_depart %></span>
-    </p>
-    <p>
-      <i class="fa-solid fa-user"></i>
-      <span> <%= offre.voiture.conducteur.user.first_name %> </span>
-    </p>
-  </div>
-
-  <div class="prix">
-    <p>
-      <i class="fa-solid fa-hand-holding-dollar"></i>
-      <span> <%= offre.prix %> </span>
-    </p>
+    </div>
+    <div class= "d-flex gap-2 align-items-center mt-2">
+      <%= image_tag "date" %>
+      <span><%= offre.heure_depart.strftime('%d/%m/%y -%H:%M') %></span>
+    </div>
+    <div class= "d-flex gap-2 align-items-center mt-2">
+      <%= image_tag "driver" %>
+      <span><%= offre.voiture.conducteur.user.first_name %></span>
+    </div>
+    <div class= "d-flex gap-2 align-items-center mt-2">
+      <%= image_tag "price" %>
+      <span><%= offre.prix %> MAD</span>
+    </div>
   </div>
 
 </div>

@@ -8,10 +8,12 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[new create]
   end
   resources :conducteurs do
-    resources :bookings, only: %i[index show edit update destroy]
+    resources :bookings, only: %i[ show edit update destroy]
+    get 'bookings', to: 'bookings#index_conducteur'
   end
   resources :passagers do
-    resources :bookings, only: %i[index show edit update destroy]
+    resources :bookings, only: %i[show edit update destroy]
+    get 'bookings', to: 'bookings#index_passager'
   end
   resources :users do
     resources :reviews, only: %i[create new index]

@@ -1,0 +1,16 @@
+.secondary{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+  color:$t-black;
+  box-shadow:inset 0px 0px 0px 1px $t-black;
+  border-radius: 6px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  margin-top: 24px;
+  }

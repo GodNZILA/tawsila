@@ -1,4 +1,4 @@
-
+<% unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
 <% if user_signed_in? %>
     <% passager_booking = current_page?(passager_bookings_path(current_user.passager))  %>
     <% offre = current_page?(offres_path)  %>
@@ -6,18 +6,21 @@
 
   <div class="tawsila-navbar" data-controller="navbar">
     <div class="sc-bottom-bar">
-      <%= link_to passager_bookings_path(current_user.passager), class: "sc-menu-item #{passager_booking ? 'selected' : ''} " do  %>
-        <i class="fa-solid fa-user"></i>
+      <%= link_to passager_bookings_path(current_user.passager), class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{passager_booking ? 'selected' : ''} " do  %>
+        <%= image_tag "driver" %>
+        <span>Passager</span>
       <% end %>
-      <%= link_to offres_path, class: "sc-menu-item #{offre ? 'selected' : ''} " do  %>
-        <i class="fa-solid fa-magnifying-glass"></i>
+      <%= link_to offres_path, class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2  #{offre ? 'selected' : ''} " do  %>
+         <%= image_tag "recherche" %>
+          <span>Recherche</span>
       <% end %>
-      <%= link_to conducteur_bookings_path(current_user.conducteur), class: "sc-menu-item #{conducteur_booking ? 'selected' : ''} " do  %>
-          <i class="fa-solid fa-car"></i>
+      <%= link_to conducteur_bookings_path(current_user.conducteur), class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{conducteur_booking ? 'selected' : ''} " do  %>
+           <%= image_tag "conducteur" %>
+          <span>Conducteur</span>
       <% end %>
     </div>
   </div>
-<% else %>
+ <% else %>
   <div class="tawsila-navbar" data-controller="navbar">
     <div class="sc-bottom-bar">
       <%= link_to new_user_session_path, class: "sc-menu-item" do  %>
@@ -32,4 +35,5 @@
     </div>
   </div>
 
+<% end %>
 <% end %>
