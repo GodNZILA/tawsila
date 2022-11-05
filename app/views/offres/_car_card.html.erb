@@ -2,9 +2,13 @@
      <%# <div class="img-card">
      <h3> <%= offre.description_trajet %></h3>
 
-    <div class="images-card" style="background-image: url('<%= image_url "voiture1.jpeg" %>');background-size: cover;
-    background-repeat: no-repeat; height: 200px; width: 100%; background-position: center;">
-     <%# </div> %>
+     <%= unless offre.voiture.photo.key %>
+        <div class="images-card" style="background-image: url('<%= image_url "voiture1.jpeg" %>');background-size: cover;
+        background-repeat: no-repeat; height: 100%; width: 200px; background-position: center;">
+    <% else %>
+     <div class="images-card" style="background-image: url('<%= offre.voiture.photo.url %>');background-size: cover;
+        background-repeat: no-repeat; height: 100%; width: 200px; background-position: center;">
+    <% end %>
 
    </div>
 
