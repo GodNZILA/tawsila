@@ -1,12 +1,14 @@
 <div class="card-offre mb-3">
-     <%# <div class="img-card">
-     <h3> <%= offre.description_trajet %></h3>
 
-    <div class="images-card" style="background-image: url('<%= image_url "voiture1.jpeg" %>');background-size: cover;
-    background-repeat: no-repeat; height: 200px; width: 100%; background-position: center;">
-     <%# </div> %>
 
-   </div>
+    <% if offre.voiture.photo.key.nil? %>
+        <div class="images-card" style="background-image: url('<%= image_url "voiture1.jpeg" %>');background-size: cover;
+        background-repeat: no-repeat; height: 100%; width: 200px; background-position: center;"> </div>
+    <% else %>
+     <div class="images-card" style="background-image: url('<%= cl_image_path offre.voiture.photo.key %>');background-size: cover;
+        background-repeat: no-repeat; height: 100%; width: 200px; background-position: center;"> </div>
+    <% end %>
+
 
   <div class="offre-info p-3">
 
