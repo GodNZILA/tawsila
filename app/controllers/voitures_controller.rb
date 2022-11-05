@@ -42,10 +42,9 @@ class VoituresController < ApplicationController
   private
 
   def voiture_params
-    params.require(:voiture).permit(:marque, :model, :couleur, :immatriculation, :nb_places)
+    params.require(:voiture).permit(:marque, :model, :couleur, :immatriculation, :nb_places, :photo)
   end
 
   def set_voiture
     @voiture = Voiture.find(params[:id])
   end
-
