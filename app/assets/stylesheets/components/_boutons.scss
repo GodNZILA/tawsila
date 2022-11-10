@@ -12,6 +12,35 @@
   font-weight: 600;
 }
 
+.btn-secondary-sm{
+  outline: 1px solid $t-black;
+  color: $t-black;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.btn-tertiary-sm{
+
+  color: $t-black;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+
 .btn-danger-sm{
   color: #dc2626;
   font-size: 16px;

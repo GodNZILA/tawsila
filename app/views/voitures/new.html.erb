@@ -1,3 +1,11 @@
+<div class="title p-3">
+    <div class="d-flex justify-content-between align-items-center mb-3" >
+  <%= image_tag "logo", style: "height: 40px" %>
+        <h2>Ajouter une voiture</h2>
+  <%= image_tag "avatar", style: "height: 40px; border-radius: 50%" %>
+  </div>
+  </div>
+
 <div class="container mt-5">
 <h4>Remplissez les informations de la voiture</h4>
 <%= render 'form', voiture: @voiture %>
@@ -6,4 +14,9 @@
 <%= link_to voitures_path do %>
 <i class="fa-solid fa-arrow-rotate-left"></i> Retour
 <% end %>
+
+<%= link_to voitures_path, class:"btn primary3 position-fixed", style:"bottom:80px; right:16px; border-radius:50px; height:  72px; width: 72px;" do %>
+<%= image_tag "garage1" %>
+<% end %>
+
 </div>
