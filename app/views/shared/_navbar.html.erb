@@ -1,36 +1,48 @@
 <% unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
 <% if user_signed_in? %>
-    <% passager_booking = current_page?(passager_bookings_path(current_user.passager))  %>
+    <% passager_booking = current_user.passager ? current_page?(passager_bookings_path(current_user.passager)) : false %>
     <% offre = current_page?(offres_path)  %>
-    <% conducteur_booking =  current_page?(conducteur_bookings_path(current_user.conducteur)) %>
+    <% conducteur_booking = current_user.conducteur ? current_page?(conducteur_bookings_path(current_user.conducteur)) : false %>
 
   <div class="tawsila-navbar" data-controller="navbar">
     <div class="sc-bottom-bar">
-      <%= link_to passager_bookings_path(current_user.passager), class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{passager_booking ? 'selected' : ''} " do  %>
-        <%= image_tag "driver" %>
-        <span>Passager</span>
+       <% if current_user.passager %>
+        <%= link_to passager_bookings_path(current_user.passager), class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{passager_booking ? 'selected' : ''} " do  %>
+          <%= image_tag "driver" %><span>Passager</span>
+        <% end %>
+      <% else %>
+        <%= link_to new_passager_path, class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{passager_booking ? 'selected' : ''} " do  %>
+          <%= image_tag "conducteur" %> <span>Passager</span>
+        <% end %>
       <% end %>
       <%= link_to offres_path, class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2  #{offre ? 'selected' : ''} " do  %>
-         <%= image_tag "recherche" %>
-          <span>Recherche</span>
+         <%= image_tag "recherche" %><span>Recherche</span>
       <% end %>
-      <%= link_to conducteur_bookings_path(current_user.conducteur), class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{conducteur_booking ? 'selected' : ''} " do  %>
-           <%= image_tag "conducteur" %>
-          <span>Conducteur</span>
+      <% if current_user.conducteur %>
+        <%= link_to conducteur_bookings_path(current_user.conducteur), class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{conducteur_booking ? 'selected' : ''} " do  %>
+            <%= image_tag "conducteur" %><span>Conducteur</span>
+        <% end %>
+      <% else %>
+        <%= link_to new_conducteur_path, class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{conducteur_booking ? 'selected' : ''} " do  %>
+          <%= image_tag "conducteur" %> <span>Conducteur</span>
+        <% end %>
       <% end %>
     </div>
   </div>
  <% else %>
   <div class="tawsila-navbar" data-controller="navbar">
     <div class="sc-bottom-bar">
-      <%= link_to new_user_session_path, class: "sc-menu-item" do  %>
-        <i class="fa-solid fa-user"></i>
+      <%= link_to new_user_session_path, class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{passager_booking ? 'selected' : ''} "  do  %>
+        <%= image_tag "driver" %>
+        <span>Passager</span>
       <% end %>
-      <%= link_to offres_path, class: "sc-menu-item selected " do  %>
-        <i class="fa-solid fa-magnifying-glass"></i>
+      <%= link_to offres_path, class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{passager_booking ? 'selected' : ''}  " do  %>
+        <%= image_tag "recherche" %>
+          <span>Recherche</span>
       <% end %>
-      <%= link_to new_user_session_path, class: "sc-menu-item" do  %>
-          <i class="fa-solid fa-car"></i>
+      <%= link_to new_user_session_path, class: "sc-menu-item d-flex flex-column justify-content-center align-items-center gap-2 #{passager_booking ? 'selected' : ''} " do  %>
+          <%= image_tag "conducteur" %>
+          <span>Conducteur</span>
       <% end %>
     </div>
   </div>

@@ -1,7 +1,6 @@
-<div class="container">
-  <div class="card" style="width: 48rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
+
+  <div class=" w-100 p-3 mt-3">
+    <div class="d-flex flex-column gap-3 position-relative">
       <%= simple_form_for(offre) do |f| %>
       <%= f.input :description_trajet, label: 'Donner une description à votre trajet' %>
       <%# <%= f.input :types, label: 'Type de produit', collection: {Pantalon: :Pantalon, Jupe: :Jupe, Costume: :Costume, Robe: :Robe, Accessoire: :Accessoire, Chaussure: :Chaussure, Short: :Short, Equipement: :Equipement, Bijoux: :Bijoux, Autres: :Autres} %>
@@ -11,8 +10,12 @@
       <%= f.input :heure_depart, label: 'Heure de départ' %>
       <%= f.input :prix, label: 'Prix du trajet complet' %>
       <%# <%= f.input :image, label: 'Télécharger une photo de votre article'%>
-      <%= f.submit %>
+      <div class="d-flex w-100 gap-3">
+      <%= f.submit "Ajouter", class: "btn btn-primary-sm" %>
+      <%= link_to offres_path, class: "btn btn-danger-sm" do %>
+        Annuler
+      <% end %>
+      </div>
       <% end %>
     </div>
   </div>
-</div>
