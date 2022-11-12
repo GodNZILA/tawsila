@@ -60,7 +60,7 @@ voiture4 = Voiture.new(model: "Range Rover Sport", marque: "Land Rover", immatri
 voiture4.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 voiture4.save
 # voiture5 = Voiture.create!(model: "Range Rover Sport", marque: "Land Rover", immatriculation: "QA-143-AA", conducteur: conducteur5)
-file = URI.open("https://images.unsplash.com/photo-1638686302275-0e87df720aca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80")
+file = URI.open("https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
 voiture5 = Voiture.new(model: "Range Rover Sport", marque: "Land Rover", immatriculation: "TA-885-AA", conducteur: conducteur1)
 voiture5.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 voiture5.save

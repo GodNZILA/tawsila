@@ -5,7 +5,7 @@
         <div class="images-card" style="background-image: url('<%= image_url "voiture1.jpeg" %>');background-size: cover;
         background-repeat: no-repeat; height: 200px; width: 380px; background-position: center;"> </div>
     <% else %>
-     <div class="images-card" style="background-image: url('<%= cl_image_path offre.voiture.photo.key %>');background-size: cover;
+     <div class="images-card" style="background-image: url('<%= cl_image_path offre.voiture.photo.key, crop: :fill, gravity: :auto %>');background-size: cover;
         background-repeat: no-repeat; height: 200px; width: 380px; background-position: center;"> </div>
     <% end %>
 

@@ -20,7 +20,7 @@
   <% key = Voiture.find(image_id).photo.key %>
   <br>
   <div class= "image_class">
-  <%= cl_image_tag key, height: 200, width: 300, crop: :fill  %>
+  <%= cl_image_tag key, height: 200, width: 300, crop: :fill, gravity: :auto  %>
   </div>
 <%  %>
 </div>
