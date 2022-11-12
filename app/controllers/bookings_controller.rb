@@ -11,6 +11,11 @@ class BookingsController < ApplicationController
   #   end
   # end
 
+  def index
+    index_conducteur
+    render "index_conducteur"
+  end
+
   def index_passager
     @bookings = Booking.where(passager_id: current_user.passager.id)
   end
@@ -29,8 +34,8 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.passager = current_user.passager
-    @booking.offre_id = params[:offre_id]
-    if @booking.save
+    # @booking.offre_id = params[:offre_id]
+    if @booking.save!
       if current_user.passager
       redirect_to passager_bookings_path(current_user.passager), notice: 'Votre réservation a bien été créée'
       else
@@ -51,10 +56,10 @@ class BookingsController < ApplicationController
   end
 
   def update
-
     @booking.update(booking_params)
     redirect_to bookings_path
   end
+
 
   def destroy
 
@@ -65,7 +70,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:depart, :arrivee, :prix)
+    params.require(:booking).permit(:depart, :arrivee, :statut, :prix, :offre_id)
   end
 
   def set_booking

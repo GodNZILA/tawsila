@@ -1,36 +1,35 @@
 <div class="title p-3">
-    <div class="d-flex justify-content-between align-items-center mb-3" >
-  <%= image_tag "logo", style: "height: 40px" %>
-        <h2>Trajets disponibles</h2>
-  <%= image_tag "avatar", style: "height: 40px; border-radius: 50%" %>
+  <div class="d-flex justify-content-between align-items-center mb-3" >
+    <%= image_tag "logo", style: "height: 40px" %>
+    <h2>Trajets disponibles</h2>
+    <%= image_tag "avatar", style: "height: 40px; border-radius: 50%" %>
   </div>
   <%= form_with url: offres_path, method: :get, class: "d-flex" do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Trouver un trajet"
-          %>
-          <%= button_tag( :class => "primary2") do %>
-           <i class="fa-solid fa-magnifying-glass"></i>
-<% end %>
-
-        <% end %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Trouver un trajet"
+    %>
+    <%= button_tag( :class => "primary2") do %>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    <% end %>
+  <% end %>
 </div>
 
-<div class="container offre-index" style= "padding-top: 154px">
+<div class="container offre-index" style= "padding-top: 154px; margin-bottom:96px;">
 
-    <div class="listes-offres">
-        <ul class="list-unstyled">
-        <% @offres.each do |offre| %>
+  <div class="listes-offres">
+    <ul class="list-unstyled">
+      <% @offres.each do |offre| %>
         <%= link_to offre_path(offre) do %>
-        <%= render "car_card", offre: offre %>
+          <%= render "car_card", offre: offre %>
         <% end %>
-        <% end %>
-        </ul>
-    </div>
+      <% end %>
+    </ul>
+  </div>
 
-    <div class="menu">
+  <div class="menu">
 
-    </div>
+  </div>
 
 </div>

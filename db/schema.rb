@@ -69,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_05_135856) do
     t.string "description_trajet"
     t.string "depart"
     t.string "arrivee"
+    t.string "status", default: "valide"
     t.datetime "heure_depart"
     t.float "prix"
     t.bigint "voiture_id", null: false
