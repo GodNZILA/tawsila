@@ -1,6 +1,6 @@
 <% unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
 <% if user_signed_in? %>
-    <% passager_booking = current_user.passager ? current_page?(passager_bookings_path(current_user.passager)) : false %>
+    <% passager_booking = current_user.passager ? current_page?(passager_bookings_path(current_user.passager))  : false %>
     <% offre = current_page?(offres_path)  %>
     <% conducteur_booking = current_user.conducteur ? current_page?(conducteur_bookings_path(current_user.conducteur)) : false %>
 
