@@ -7,11 +7,15 @@ class OffresController < ApplicationController
     # if current_user.passager.nil? && current_user.conducteur.nil?
     #   redirect_to edit_user_path(current_user)
     # end
-    @offres = Offre.all
+    if params[:query].present?
+      @offres = Offre.where("status = 'valide' AND ( depart ilike '%#{params[:query]}%' OR arrivee ilike '%#{params[:query]}%')")
+    else
+      @offres = Offre.where(status: "valide")
+    end
   end
 
   def show
-    @booking = Booking.new
+    @booking = Booking.new(offre_id: @offre.id)
     @is_creator = @offre.voiture.conducteur.user == current_user
   end
 
@@ -39,7 +43,8 @@ class OffresController < ApplicationController
   end
 
   def destroy
-    @offre.destroy!
+    @offre.status = "archivée"
+    @offre.save
     redirect_to offres_path
   end
 

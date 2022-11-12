@@ -9,10 +9,12 @@ export default class extends Controller {
   accepte(e){
   e.preventDefault()
     this.popupaTarget.classList.remove("d-none")
+    document.getElementById("booking_statut").value = "Accepté";
   }
   refuse(e){
     e.preventDefault()
     this.popuprTarget.classList.remove("d-none")
+    document.getElementById("booking_statut").value = "Refusé";
   }
   close(e){
     e.preventDefault()

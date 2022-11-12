@@ -31,7 +31,14 @@
         <%= image_tag "price" %>
         <span><%= @booking.prix %> MAD</span>
       </div>
-      <%= image_tag "statut-a" %>
+      <div class= "d-flex gap-2 align-items-center mt-2">
+      <% if @booking.statut == "Refusé" %>
+        <%= image_tag "state",:style => "width: 32px; border: 1px solid red "%>
+        <span> Votre réservation a été <%= @booking.statut %></span>
+      <% else %>
+        <%= image_tag "state",:style => "width: 32px; border: 1px solid green "%>
+        <span> Votre réservation a été <%= @booking.statut %></span>
+      <% end %>
 </div>
 <div class="d-flex container flex-column gap-3">
       <%= link_to "Editer", edit_booking_path(@booking), class: "btn btn-secondary-sm" %>

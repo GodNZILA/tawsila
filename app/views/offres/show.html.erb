@@ -31,15 +31,16 @@
       </div>
 </div>
 
-      <%= link_to "Supprimer l'offre", offre_path(@offre), class: "btn btn-danger-sm m-3", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if @is_creator%>
+      <%= link_to "Archiver l'offre", offre_path(@offre), class: "btn btn-danger-sm m-3", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if @is_creator%>
 
 <% unless @is_creator %>
-<div class="book-card p-3">
-  <%= simple_form_for @booking do |f|  %>
-  <%= f.input :depart %>
-  <%= f.input :arrivee %>
+  <div class="book-card p-3">
+    <%= simple_form_for @booking do |f|  %>
+      <%= f.input :depart %>
+      <%= f.input :arrivee %>
+      <%= f.input :offre_id, as: :hidden %>
 
-  <% end %>
-      <%= link_to "Réserver le trajet", new_offre_booking_path(@offre), class: "btn btn-primary-sm" unless @is_creator %>
-</div>
+      <%= f.submit "Réserver le trajet", class: "btn btn-primary-sm" %>
+    <% end %>
+  </div>
 <% end %>

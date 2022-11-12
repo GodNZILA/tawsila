@@ -1,67 +1,70 @@
-<div class="title p-3">
+<div class="d-flex justify-content-center flex-row-reverse">
+  <div class="title p-3">
     <div class="d-flex justify-content-between align-items-center mb-3" >
-  <%= image_tag "logo", style: "height: 40px" %>
-        <h2>Liste de réservations</h2>
-  <%= image_tag "avatar", style: "height: 40px; border-radius: 50%" %>
-  </div>
-<div class="card_booking_conducteur d-flex flex-column gap-3 position-relative mt-3">
-<% if @bookings %>
-  <% @bookings.each do |booking|%>
-    <div class="card-offre p-3" data-controller="popup">
-      <div class= "d-flex gap-2 align-items-center">
-        <%= image_tag "location" %>
-        <span><%= booking.depart %></span>
-      </div>
-    <%= image_tag "trajet" %>
-      <div class= "d-flex gap-2 align-items-center">
-        <%= image_tag "location" %>
-        <span><%= booking.arrivee %></span>
-      </div>
-      <div class= "d-flex gap-2 align-items-center mt-2">
-        <%= image_tag "date" %>
-        <span><%= booking.heure_depart %></span>
-      </div>
-      <div class= "d-flex gap-2 align-items-center mt-2">
-        <%= image_tag "price" %>
-        <span><%= booking.prix %> MAD</span>
-      </div>
-      <div class="d-flex w-100 gap-3">
-      <a href="#" class="btn btn-primary-sm" id="accepte" data-action="click->popup#accepte"> Accepter</a>
-      <a href="#" class="btn btn-danger-sm" id="refuse" data-action="click->popup#refuse"> Refuser</a>
-      </div>
-      <div class="popup d-none m-auto h-100" data-popup-target="popupa">
-          <h4 class="w-100 text-center">Saisissez le prix du trajet</h4>
-      <%= simple_form_for booking do |f| %>
-      <%= f.input :prix, placeholder: "Prix" %>
-      <%= f.input :statut, as: :hidden, html_input: {value: "Accepté"} %>
-      <div class="d-flex gap-3 w-100">
-      <%= f.submit "Confirmer", :class=>"btn btn-primary-sm" %>
-          <a href="#" class="btn btn-danger-sm" data-action="click->popup#close">Annuler</a>
-      </div>
-      <% end %>
-      </div>
-      <div class="popup d-none" data-popup-target="popupr">
-          <h4 class="w-100 text-center">Êtes-vous sûr de vouloir refuser la demande?</h4>
-      <%= simple_form_for booking do |f| %>
-      <%= f.input :statut, as: :hidden, html_input: {value: "refusé"} %>
-      <div class="d-flex gap-3 w-100">
-      <%= f.submit "Refuser", :class=>"btn btn-primary-sm", style:"background-color: #dc2626;"  %>
-          <a href="#" class="btn btn-danger-sm" data-action="click->popup#close">Annuler</a>
-      </div>
-      <% end %>
-      </div>
+      <%= image_tag "logo", style: "height: 40px" %>
+      <h2>Liste de réservations</h2>
+      <%= image_tag "avatar", style: "height: 40px; border-radius: 50%" %>
     </div>
-  <% end %>
-  <% else %>
-    <p>Vous pas encore de demande de réservation</p>
-<% end %>
+  </div>
+  <div class="card_booking_conducteur d-flex flex-column gap-3 position-relative">
+    <% if @bookings %>
+      <% @bookings.each do |booking|%>
+      <div class="card-offre p-3" data-controller="popup">
+        <div class= "d-flex gap-2 align-items-center">
+          <%= image_tag "location" %>
+          <span><%= booking.depart %></span>
+        </div>
+        <%= image_tag "trajet" %>
+        <div class= "d-flex gap-2 align-items-center">
+          <%= image_tag "location" %>
+          <span><%= booking.arrivee %></span>
+        </div>
+        <div class= "d-flex gap-2 align-items-center mt-2">
+          <%= image_tag "date" %>
+          <span><%= booking.heure_depart %></span>
+        </div>
+        <div class= "d-flex gap-2 align-items-center mt-2">
+          <%= image_tag "price" %>
+          <span><%= booking.prix %> MAD</span>
+        </div>
+        <div class="d-flex w-100 gap-3">
+          <a href="#" class="btn btn-primary-sm" id="accepte" data-action="click->popup#accepte"> Accepter</a>
+          <a href="#" class="btn btn-danger-sm" id="refuse" data-action="click->popup#refuse"> Refuser</a>
+        </div>
+        <div class="popup d-none m-auto h-100" data-popup-target="popupa">
+          <h4 class="w-100 text-center">Saisissez le prix du trajet</h4>
+          <%= simple_form_for booking do |f| %>
+            <%= f.input :prix, placeholder: "Prix" %>
+            <%= f.input :statut, as: :hidden, html_input: {value: "Accepté"} %>
+          <div class="d-flex gap-3 w-100">
+              <%= f.submit "Confirmer", :class=>"btn btn-primary-sm" %>
+                  <a href="#" class="btn btn-danger-sm" data-action="click->popup#close">Annuler</a>
+          </div>
+          <% end %>
+        </div>
+        <div class="popup d-none" data-popup-target="popupr">
+          <h4 class="w-100 text-center">Êtes-vous sûr de vouloir refuser la demande?</h4>
+          <% booking.statut = "Refusé" %>
+          <%= simple_form_for booking do |f| %>
+            <%= f.input :statut, as: :hidden, html_input: {value: "Refusé"} %>
+            <div class="d-flex gap-3 w-100">
+              <%= f.submit "Refuser", :class=>"btn btn-primary-sm", style:"background-color: #dc2626;"  %>
+                <a href="#" class="btn btn-danger-sm" data-action="click->popup#close">Annuler</a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    <% else %>
+      <p>Vous pas encore de demande de réservation</p>
+    <% end %>
   </div>
 
-  <%= link_to new_offre_path, class:"btn primary position-fixed", style:"bottom:80px; right:16px; border-radius:50px; height:64px; width: 64px;" do %>
-  <i class="fas fa-plus"></i>
-<% end %>
-
-<%= link_to new_voiture_path, class:"btn primary position-fixed", style:"bottom:80px; left:16px; border-radius:50px; height:64px; width: 64px;" do %>
-  <i class="fa-solid fa-car"></i>
+    <%= link_to new_offre_path, class:"btn primary position-fixed", style:"bottom:80px; right:16px; border-radius:50px; height:64px; width: 64px;" do %>
+    <i class="fas fa-plus"></i>
   <% end %>
+
+  <%= link_to new_voiture_path, class:"btn primary position-fixed", style:"bottom:80px; left:16px; border-radius:50px; height:64px; width: 64px;" do %>
+    <i class="fa-solid fa-car"></i>
+    <% end %>
 </div>
