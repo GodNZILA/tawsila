@@ -55,3 +55,14 @@
   border-radius: 6px;
   font-weight: 600;
 }
+
+.back-btn{
+  border: 1px solid black;
+  width: fit-content;
+  padding: 4px 16px;
+  border-radius: 16px;
+  &hover  {
+    background-color: yellow;
+    color: white;
+  }
+}

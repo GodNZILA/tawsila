@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_05_135856) do
   create_table "bookings", force: :cascade do |t|
     t.date "date_reservation"
     t.float "prix"
-    t.string "statut"
+    t.string "statut", default: "En attente"
     t.bigint "offre_id", null: false
     t.bigint "passager_id", null: false
     t.datetime "created_at", null: false

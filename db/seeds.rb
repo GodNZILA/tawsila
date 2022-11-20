@@ -85,11 +85,11 @@ offre6 = Offre.create!(description_trajet: "Vers Ouled Ziane", depart: "Bourgogn
 
 p "creation des bookings"
 
-booking1 = Booking.create!(offre: offre1, date_reservation: "15/10/2022 15:30", depart: "Medina", arrivee: "Oulfa", prix: 20, statut: "Refusé", passager: passager1)
+booking1 = Booking.create!(offre: offre1, date_reservation: "15/10/2022 15:30", depart: "Medina", arrivee: "Oulfa", prix: 20, statut: "En attente", passager: passager1)
 
-booking2 = Booking.create!(offre: offre2, date_reservation: "16/10/2022 08:30", depart: "Sbata", arrivee: "Morocco Mall", prix: 10, statut: "Refusé", passager: passager2)
+booking2 = Booking.create!(offre: offre2, date_reservation: "16/10/2022 08:30", depart: "Sbata", arrivee: "Morocco Mall", prix: 10, statut: "En attente", passager: passager2)
 
-booking3 = Booking.create!(offre: offre3, date_reservation: "20/10/2022 17:30", depart: "Ain Seeba", arrivee: "Sidi Maarouf", prix: 50, statut: "Refusé", passager: passager3)
+booking3 = Booking.create!(offre: offre3, date_reservation: "20/10/2022 17:30", depart: "Ain Seeba", arrivee: "Sidi Maarouf", prix: 50, statut: "En attente", passager: passager3)
 
 p "creation des reviews"
 review1 = Review.create!(user: user1, content: "Bon chauffeur", rating: 5)

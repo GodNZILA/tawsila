@@ -2,8 +2,7 @@
   <%= simple_form_for [@offre, @booking] do |f|  %>
     <%= f.input :depart %>
     <%= f.input :arrivee %>
-    <%= f.input :prix %>
-    <%= f.submit "Valider" %>
+    <%= f.submit "Valider", :class=>"btn btn-primary-sm" %>
   <% end %>
 
 </div>

@@ -1,3 +1,4 @@
+<div class="d-flex justify-content-center flex-row-reverse">
 <div class="title p-3">
       <div class="d-flex justify-content-between align-items-center mb-3" >
     <%= image_tag "logo", style: "height: 40px" %>
@@ -6,7 +7,7 @@
     </div>
   </div>
 
-<div class="container mt-5">
+<div class="container" style= "margin-top: 96PX;">
   <h4>Remplissez les informations de la voiture</h4>
   <%= render 'form', voiture: @voiture %>
 
@@ -19,4 +20,5 @@
 <%= image_tag "garage1" %>
 <% end %>
 
+</div>
 </div>

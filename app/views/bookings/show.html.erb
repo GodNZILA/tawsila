@@ -1,46 +1,51 @@
 <div class="title p-3">
-    <div class="d-flex justify-content-between align-items-center mb-3" >
-  <%= image_tag "logo", style: "height: 40px" %>
-        <h2>Détails du trajet</h2>
-  <%= image_tag "avatar", style: "height: 40px; border-radius: 50%" %>
+  <div class="d-flex justify-content-between align-items-center mb-3" >
+    <%= image_tag "logo", style: "height: 40px" %>
+    <h2>Détails du trajet</h2>
+    <%= image_tag "avatar", style: "height: 40px; border-radius: 50%" %>
   </div>
 </div>
-<br>
-<br>
-<br>
-<br>
+<br/>
+<br/>
+<br/>
+<br/>
 <div class="p-3">
-      <%= link_to "Retour", bookings_path %>
+
 </div>
 <div class="card-offre m-3 p-3">
 
- <div class= "d-flex gap-2 align-items-center">
-        <%= image_tag "location" %>
-        <span><%= @booking.depart %>Derb Sultan</span>
-      </div>
-    <%= image_tag "trajet" %>
-      <div class= "d-flex gap-2 align-items-center">
-        <%= image_tag "location" %>
-        <span><%= @booking.arrivee %>Ain sebaa</span>
-      </div>
-      <div class= "d-flex gap-2 align-items-center mt-2">
-        <%= image_tag "date" %>
-        <span><%= @booking.heure_depart %>17:00</span>
-      </div>
-      <div class= "d-flex gap-2 align-items-center mt-2">
-        <%= image_tag "price" %>
-        <span><%= @booking.prix %> MAD</span>
-      </div>
-      <div class= "d-flex gap-2 align-items-center mt-2">
-      <% if @booking.statut == "Refusé" %>
-        <%= image_tag "state",:style => "width: 32px; border: 1px solid red "%>
-        <span> Votre réservation a été <%= @booking.statut %></span>
-      <% else %>
-        <%= image_tag "state",:style => "width: 32px; border: 1px solid green "%>
-        <span> Votre réservation a été <%= @booking.statut %></span>
-      <% end %>
-</div>
-<div class="d-flex container flex-column gap-3">
-      <%= link_to "Editer", edit_booking_path(@booking), class: "btn btn-secondary-sm" %>
-      <%= link_to "Supprimer", booking_path(@booking), class: "btn btn-danger-sm", data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr de supprimer cette réservation?"}%>
+  <div class= "d-flex gap-2 align-items-center">
+    <%= image_tag "location" %>
+    <span><%= @booking.depart %></span>
+  </div>
+  <%= image_tag "trajet" %>
+  <div class= "d-flex gap-2 align-items-center">
+    <%= image_tag "location" %>
+    <span><%= @booking.arrivee %></span>
+  </div>
+  <div class= "d-flex gap-2 align-items-center mt-2">
+    <%= image_tag "date" %>
+    <span><%= @booking.heure_depart %>17:00</span>
+  </div>
+  <div class= "d-flex gap-2 align-items-center mt-2">
+    <%= image_tag "price" %>
+    <span><%= @booking.prix %> MAD</span>
+  </div>
+  <div class= "d-flex gap-2 align-items-center mt-2">
+    <% if @booking.statut == "En attente" || @booking.statut.nil? %>
+      <%= image_tag "state",:style => "width: 32px; border: 1px solid yellow "%>
+      <span> Votre réservation est <%= @booking.statut %></span>
+    <% elsif  @booking.statut == "Refusé" %>
+      <%= image_tag "state",:style => "width: 32px; border: 1px solid red "%>
+      <span > Votre réservation est <%= @booking.statut %></span>
+    <% else %>
+      <%= image_tag "state",:style => "width: 32px; border: 1px solid green "%>
+      <span > Votre réservation est <%= @booking.statut %></span>
+    <% end %>
+  </div>
+  <div class="d-flex container flex-column gap-3">
+    <%= link_to "Editer", edit_booking_path(@booking), class: "btn btn-secondary-sm" %>
+    <%= link_to "Supprimer", offres_path(@booking), class: "btn btn-danger-sm", data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr de supprimer cette réservation?"}%>
+    <%= link_to "< Retour", offres_path, class: "back-btn" %>
+  </div>
 </div>
